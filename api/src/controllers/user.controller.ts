@@ -1,8 +1,10 @@
 import type { Request, Response } from 'express';
 import { 
     findAllUsers,
-    findUserById 
+    findUserById,
+    insertUser 
     } from "../services/user.service.ts";
+import type { CreateUser } from '../types/user.types.ts';
 
 export function getAllUsers(request: Request, response: Response) {
     const users = findAllUsers();
@@ -17,3 +19,13 @@ const user = findUserById(Number(id));
 
 response.status(200).json(user);
 }
+
+ export function CreateUser(request :Request, response: Response) {
+    const {name, email, password} = request.body as CreateUser;
+
+   const user = insertUser({name,email, password});
+
+   response.status(201).json(user);
+   
+
+ }
