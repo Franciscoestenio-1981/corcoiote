@@ -1,4 +1,4 @@
-import type {user} from '../types/user.types.ts';
+import type {User} from '../types/user.types.ts';
 
 const users: user[] = [{
     id: 1,
